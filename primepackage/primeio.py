@@ -15,7 +15,7 @@ import csv
 
 
 def write_primes(l, file_name):
-    '''
+    """
 
        This method writes a list of hundred prime integer numbers to file_name.
        It takes a list of prime numbers and converts it to a csv file.
@@ -32,11 +32,17 @@ def write_primes(l, file_name):
        Examples:
        >>> write_primes(l, 'name.csv')
 
-    '''
-    p_writer = open(file_name, 'w')
-    write_csv = csv.writer(p_writer)
-    write_csv.writerow([l])
-    p_writer.close()
+    """
+    try:
+        p_writer = open(file_name, 'w')
+        write_csv = csv.writer(p_writer)
+        write_csv.writerow([l])
+
+    except BaseException:
+        print("Please input correct variable name Ex)file_name or l")
+
+    finally:
+        p_writer.close()
 
 
 def read_primes(file_name):
@@ -55,9 +61,13 @@ def read_primes(file_name):
            IOError: IO Error.
 
            Examples:
-           >>> list = read_primes('output.csv')
+           >>> list = read_primes('list.txt')
 
         '''
-    p_open = open(file_name, 'r')
-    p_string = ", "
-    return p_string.join(p_open)
+    try:
+        p_open = open(file_name, 'r')
+        p_string = ", "
+        return p_string.join(p_open)
+
+    except BaseException:
+        print('No data available')

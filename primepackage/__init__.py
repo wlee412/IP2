@@ -5,7 +5,6 @@ The reason for the existence of this file is that it is part of the package in t
 Therefore, a directory without a file named __init__.py is not recognized as a package.
 """
 
-
 """
 __author__ = "William Lee"
 __license__ = "GPL"

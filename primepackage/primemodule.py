@@ -28,19 +28,24 @@ def isPrime(n):
     >>> if is_prime(6);
 
     """
-    if n <= 1:
-        return False
-
-    i = 2
-    while i * i <= n:
-        if n % i == 0:
+    try:
+        if n <= 1:
             return False
-        i += 1
-    return True
+            raise Exception("Please input an integer bigger than 1")
+
+        i = 2
+        while i * i <= n:
+            if n % i == 0:
+                return False
+            i += 1
+        return True
+
+    except BaseException:
+        print("Please input greater than 1")
 
 
 def getNPrime(num):
-    '''
+    """
     This method uses the 'is_prime' method to determine the prime number, and stores and returns 100 filtered numbers
     in the list.
 
@@ -54,16 +59,21 @@ def getNPrime(num):
     IOError: IO Error.
 
     Examples:
-    >>> list = read_primes('output.csv')
+    >>> num = read_primes('output.csv')
 
-    '''
+    """
+    try:
 
-    p_list = []
-    s_num = 2
-    cnt = 0
-    while cnt < num:
-        if isPrime(s_num):
-            p_list.append(s_num)
-            cnt = cnt + 1
-        s_num = s_num + 1
-    return p_list
+        p_list = []
+        s_num = 2
+        cnt = 0
+
+        while cnt < num:
+            if isPrime(s_num):
+                p_list.append(s_num)
+                cnt = cnt + 1
+            s_num = s_num + 1
+        return p_list
+    
+    except Exception:
+        print('Error has occurred.')
