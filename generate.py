@@ -12,9 +12,6 @@ __status__ = "complete"
 
 """
 
-
-
-
 from primepackage import *
 
 
@@ -24,12 +21,18 @@ def main():
     """
     primes = getNPrime(100)
 
-    write_primes(primes, 'output.csv')
+    try:
+        write_primes(primes, 'output.csv')
 
-    l = read_primes('output.csv')
+        l = read_primes('output.csv')
 
-    print(l)
+        print(l)
 
+    except BaseException:
+        print('no data')
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except Exception:
+            print('Error Occurred')
